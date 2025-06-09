@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebView Test</title>
+</head>
+<body>
+    <h1>Hello from WebView</h1>
+    <button onclick="loadData()">Load API Data</button>
+    <pre id="output"></pre>
+
+    <script>
+        function loadData() {
+            fetch("https://api.github.com/users/octocat")
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(err => {
+                    document.getElementById("output").textContent = "Failed to load data: " + err;
+                });
+        }
+    </script>
+</body>
+</html>
